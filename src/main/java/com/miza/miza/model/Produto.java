@@ -1,23 +1,33 @@
 package com.miza.miza.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+
 import java.time.LocalDate;
 
 @Entity
-@SequenceGenerator(name = "produto", sequenceName = "SQ_PRODUTO", allocationSize = 1)
+@Table(name = "produto")
 public class Produto {
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "produto")
-	private int codigo;
-	private String nome;
-	private double preco;
-	private boolean novo;
-	private LocalDate dataFabricacao;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "codigo")
+    private int codigo;
 
+    @Column(name = "nome")
+    private String nome;
+
+    @Column(name = "preco")
+    private double preco;
+
+    @Column(name = "novo")
+    private boolean novo;
+
+    @Column(name = "data_fabricacao")
+    private LocalDate dataFabricacao;
 	// Getter for codigo
     public int getCodigo() {
         return codigo;
